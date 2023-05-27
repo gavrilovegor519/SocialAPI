@@ -14,9 +14,6 @@ public class MessageDTOToMessageConverter implements Converter<MessageDTO, Messa
 
     @Override
     public Message convert(MessageDTO messageDTO) {
-        if(messageDTO == null) {
-            return null;
-        }
 
         return Message.builder()
                 .time(messageDTO.getTime())

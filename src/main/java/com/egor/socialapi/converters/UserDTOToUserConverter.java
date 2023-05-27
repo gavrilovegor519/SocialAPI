@@ -20,8 +20,7 @@ public class UserDTOToUserConverter implements Converter<UserDTO, User> {
                 .email(userDTO.getEmail())
                 .username(userDTO.getUsername());
 
-        if (userDTO.getPassword() != null)
-            builder.password(passwordEncoder.encode(userDTO.getPassword()));
+        builder.password(passwordEncoder.encode(userDTO.getPassword()));
 
         return builder.build();
     }

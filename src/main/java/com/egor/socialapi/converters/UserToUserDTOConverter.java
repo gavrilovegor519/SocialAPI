@@ -10,8 +10,6 @@ public class UserToUserDTOConverter implements Converter<User, UserDTO> {
 
     @Override
     public UserDTO convert(User user) {
-        if (user == null)
-            return null;
 
         return UserDTO.builder()
                 .id(user.getId())
