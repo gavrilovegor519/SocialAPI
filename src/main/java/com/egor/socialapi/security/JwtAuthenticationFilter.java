@@ -20,7 +20,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private  final JwtUtilities jwtUtilities;
+    private final JwtUtilities jwtUtilities;
     private final UserDetailsServiceImpl userDetailsService;
 
     @Override
