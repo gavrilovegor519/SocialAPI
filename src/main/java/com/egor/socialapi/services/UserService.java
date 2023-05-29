@@ -20,8 +20,6 @@ public interface UserService {
 
     void updatePassword(String password, Long id);
 
-    void updateUser(UserDTO userDTO);
-
     void makeUserAdmin(Long userId);
 
     void blockUser(Long userId);

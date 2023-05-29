@@ -5,12 +5,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDate;
-
-public interface UserRepo extends PagingAndSortingRepository<User, Long> {
+public interface UserRepo extends PagingAndSortingRepository<User, Long>, CrudRepository<User, Long> {
 
     User findUserByEmail(String email);
 
@@ -20,11 +19,6 @@ public interface UserRepo extends PagingAndSortingRepository<User, Long> {
     Page<User> findAllWithSearch(@Param("id") Long id, @Param("search") String search, Pageable pageable);
 
     @Modifying(clearAutomatically = true)
-    @Query("UPDATE User u SET u.username = :username WHERE u.id = :id")
-    int updateUserSettings(@Param("username") String username,
-                           @Param("id") Long id);
-
-    @Modifying(clearAutomatically = true)
     @Query("UPDATE User u SET u.password = :password WHERE u.id = :id")
-    int updatePassword(@Param("password") String password, @Param("id") Long id);
+    void updatePassword(@Param("password") String password, @Param("id") Long id);
 }
