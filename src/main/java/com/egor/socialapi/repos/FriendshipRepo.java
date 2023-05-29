@@ -18,8 +18,8 @@ public interface FriendshipRepo extends CrudRepository<Friendship, Long> {
     List<Friendship> findAcceptedFriendshipUsers(@Param("userId") Long userId);
 
     @Modifying(clearAutomatically = true)
-    @Query("DELETE FROM Friendship f WHERE (f.userSender = :user AND f.userReceiver = :friend) " +
-            "OR (f.userSender = :friend AND f.userReceiver = :user)")
+    @Query(value = "insert into friendship (user_sender, user_receiver, accepted) VALUES (:user, :friend, false)",
+            nativeQuery = true)
     void deleteFriendRequests(@Param("user") User user, @Param("friend") User friend);
 
     @Modifying(clearAutomatically = true)
