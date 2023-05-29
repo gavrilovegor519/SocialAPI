@@ -2,6 +2,7 @@ package com.egor.socialapi.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
 
 @Getter
 @Setter
@@ -10,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "role")
-public class Role {
+public class Role implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,4 +19,9 @@ public class Role {
 
     @Column(name = "name")
     private String name;
+
+    @Override
+    public String getAuthority() {
+        return name;
+    }
 }
