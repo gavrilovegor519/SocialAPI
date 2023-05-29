@@ -1,6 +1,6 @@
 package com.egor.socialapi.repos;
 
-import com.egor.socialapi.entities.*;
+import com.egor.socialapi.entities.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
@@ -13,9 +13,9 @@ public interface UserRepo extends PagingAndSortingRepository<User, Long>, CrudRe
 
     User findUserByEmail(String email);
 
-    Page<User> findAllByIdNot(Long Id,  Pageable pageable);
+    Page<User> findAllByIdNot(Long Id, Pageable pageable);
 
-    @Query(value="SELECT u FROM User u WHERE u.id <> :id AND LOWER(u.username) LIKE :search")
+    @Query(value = "SELECT u FROM User u WHERE u.id <> :id AND LOWER(u.username) LIKE :search")
     Page<User> findAllWithSearch(@Param("id") Long id, @Param("search") String search, Pageable pageable);
 
     @Modifying(clearAutomatically = true)

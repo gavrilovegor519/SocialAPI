@@ -1,6 +1,6 @@
 package com.egor.socialapi.converters;
 
-import com.egor.socialapi.dto.*;
+import com.egor.socialapi.dto.PostsDTO;
 import com.egor.socialapi.entities.Posts;
 import org.springframework.core.convert.converter.Converter;
 

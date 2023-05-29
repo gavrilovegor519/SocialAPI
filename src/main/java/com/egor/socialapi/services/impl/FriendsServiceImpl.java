@@ -1,10 +1,11 @@
 package com.egor.socialapi.services.impl;
 
-import com.egor.socialapi.converters.*;
-import com.egor.socialapi.repos.*;
+import com.egor.socialapi.converters.UserDTOToUserConverter;
+import com.egor.socialapi.converters.UserToUserDTOConverter;
 import com.egor.socialapi.dto.UserDTO;
 import com.egor.socialapi.entities.Friendship;
 import com.egor.socialapi.entities.User;
+import com.egor.socialapi.repos.FriendshipRepo;
 import com.egor.socialapi.services.FriendsService;
 import com.egor.socialapi.services.UserService;
 import lombok.RequiredArgsConstructor;

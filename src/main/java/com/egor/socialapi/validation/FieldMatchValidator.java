@@ -1,8 +1,8 @@
 package com.egor.socialapi.validation;
 
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.BeanWrapperImpl;
-
-import jakarta.validation.*;
 
 public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Object> {
 
@@ -20,19 +20,16 @@ public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Obje
     @Override
     public boolean isValid(final Object value, final ConstraintValidatorContext context) {
         boolean valid = true;
-        try
-        {
+        try {
             final Object firstObj = new BeanWrapperImpl(value).getPropertyValue(firstFieldName);
             final Object secondObj = new BeanWrapperImpl(value).getPropertyValue(secondFieldName);
 
-            valid =  firstObj == null && secondObj == null || firstObj != null && firstObj.equals(secondObj);
-        }
-        catch (final Exception ignore)
-        {
+            valid = firstObj == null && secondObj == null || firstObj != null && firstObj.equals(secondObj);
+        } catch (final Exception ignore) {
             // we can ignore
         }
 
-        if (!valid){
+        if (!valid) {
             context.buildConstraintViolationWithTemplate(message)
                     .addPropertyNode(firstFieldName)
                     .addConstraintViolation()

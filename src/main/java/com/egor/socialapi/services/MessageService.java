@@ -1,6 +1,6 @@
 package com.egor.socialapi.services;
 
-import com.egor.socialapi.dto.*;
+import com.egor.socialapi.dto.MessageDTO;
 
 import java.util.Collection;
 import java.util.List;

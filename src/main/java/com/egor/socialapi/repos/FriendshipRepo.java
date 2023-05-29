@@ -1,6 +1,7 @@
 package com.egor.socialapi.repos;
 
-import com.egor.socialapi.entities.*;
+import com.egor.socialapi.entities.Friendship;
+import com.egor.socialapi.entities.User;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

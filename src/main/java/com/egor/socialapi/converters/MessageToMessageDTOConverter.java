@@ -12,7 +12,7 @@ public class MessageToMessageDTOConverter {
     private final UserToUserDTOConverter userToUserDtoConverter;
 
     public MessageDTO convert(Message message, Long id) {
-        if(message == null) {
+        if (message == null) {
             return null;
         }
         return MessageDTO.builder()

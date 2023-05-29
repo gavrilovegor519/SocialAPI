@@ -1,10 +1,12 @@
 package com.egor.socialapi.validation;
 
-import jakarta.validation.*;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
 import java.lang.annotation.*;
 
 @Constraint(validatedBy = EmailValidator.class)
-@Target({ ElementType.TYPE, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface ValidEmail {

@@ -16,9 +16,8 @@ import java.time.LocalDateTime;
 public class PostsDTO {
     private long id;
     private User loggedInUser;
-    private User timelineUser;
     @NotNull
-    @Size(min=3, max = 10000)
+    @Size(min = 3, max = 10000)
     private String content;
     private String imageUrl;
     private LocalDateTime time;

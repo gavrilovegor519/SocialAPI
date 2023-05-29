@@ -1,8 +1,7 @@
 package com.egor.socialapi.entities;
 
-import lombok.*;
-
 import jakarta.persistence.*;
+import lombok.*;
 
 @Getter
 @Setter

@@ -1,6 +1,7 @@
 package com.egor.socialapi.validation;
 
-import jakarta.validation.*;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
 

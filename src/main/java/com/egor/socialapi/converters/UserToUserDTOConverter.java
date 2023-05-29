@@ -2,8 +2,8 @@ package com.egor.socialapi.converters;
 
 import com.egor.socialapi.dto.UserDTO;
 import com.egor.socialapi.entities.User;
-import org.springframework.stereotype.Component;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 @Component
 public class UserToUserDTOConverter implements Converter<User, UserDTO> {

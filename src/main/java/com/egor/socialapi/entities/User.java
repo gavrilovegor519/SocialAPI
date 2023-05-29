@@ -1,10 +1,11 @@
 package com.egor.socialapi.entities;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import jakarta.persistence.*;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter

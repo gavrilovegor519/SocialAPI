@@ -6,7 +6,8 @@ PostgreSQL Docker/Podman setup: https://github.com/khezen/compose-postgres
 
 Launch PostgreSQL server with Docker: ```docker-compose up -d```.
 
-Launch PostgreSQL server with Podman: ```podman-compose up -d``` (only on Fedora Linux with installed package ```podman-compose```).
+Launch PostgreSQL server with Podman: ```podman-compose up -d``` (only on Fedora Linux with installed
+package ```podman-compose```).
 
 Build and run project: ```./mvnw spring-boot:run```.
 

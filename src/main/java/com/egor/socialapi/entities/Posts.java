@@ -21,10 +21,6 @@ public class Posts {
     @JoinColumn(name = "loggedInUser")
     private User loggedInUser;
 
-    @ManyToOne
-    @JoinColumn(name = "timelineUser")
-    private User timelineUser;
-
     @Column(name = "content")
     private String content;
 

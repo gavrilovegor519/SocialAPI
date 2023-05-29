@@ -1,7 +1,8 @@
 package com.egor.socialapi.services;
 
-import com.egor.socialapi.dto.*;
-import com.egor.socialapi.entities.*;
+import com.egor.socialapi.dto.PageDTO;
+import com.egor.socialapi.dto.UserDTO;
+import com.egor.socialapi.entities.User;
 import org.springframework.data.domain.Pageable;
 
 public interface UserService {
