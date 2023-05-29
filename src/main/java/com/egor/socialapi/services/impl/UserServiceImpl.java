@@ -11,15 +11,22 @@ import com.egor.socialapi.exception.SocialNetworkException;
 import com.egor.socialapi.exception.UserNotFoundException;
 import com.egor.socialapi.repos.RoleRepo;
 import com.egor.socialapi.repos.UserRepo;
+import com.egor.socialapi.security.JwtUtilities;
 import com.egor.socialapi.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.egor.socialapi.constants.Constants.ROLE_ADMIN;
 import static com.egor.socialapi.constants.Constants.ROLE_USER;
@@ -28,6 +35,8 @@ import static com.egor.socialapi.constants.Constants.ROLE_USER;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
+    private final AuthenticationManager authenticationManager;
+    private final JwtUtilities jwtUtilities ;
     private final UserRepo userRepository;
     private final RoleRepo roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
@@ -114,5 +123,20 @@ public class UserServiceImpl implements UserService {
         checkSuperAdmin(user);
         user.setRoles(new ArrayList<>());
         userRepository.save(user);
+    }
+
+    @Override
+    public String authenticate(UserDTO loginDto) {
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginDto.getEmail(),
+                        loginDto.getPassword()
+                )
+        );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        User user = userRepository.findUserByEmail(authentication.getName());
+        List<String> rolesNames = new ArrayList<>();
+        user.getRoles().forEach(r-> rolesNames.add(r.getAuthority()));
+        return jwtUtilities.generateToken(user.getUsername(), rolesNames);
     }
 }

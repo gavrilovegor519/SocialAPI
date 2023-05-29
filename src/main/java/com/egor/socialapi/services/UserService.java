@@ -24,4 +24,6 @@ public interface UserService {
     void makeUserAdmin(Long userId);
 
     void blockUser(Long userId);
+
+    String authenticate(UserDTO loginDto);
 }
