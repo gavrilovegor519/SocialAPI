@@ -29,6 +29,7 @@ public class PostsServiceImpl implements PostsService {
         postsRepo.save(post);
     }
 
+    //TODO: Add get all posts of user's friends.
     @Override
     public PageDTO<PostsDTO> getAllPosts() {
         return null;
