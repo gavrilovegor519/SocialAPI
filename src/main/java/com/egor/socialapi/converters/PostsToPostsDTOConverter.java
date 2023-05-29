@@ -9,7 +9,6 @@ public class PostsToPostsDTOConverter implements Converter<Posts, PostsDTO> {
     public PostsDTO convert(Posts source) {
         return PostsDTO.builder()
                 .id(source.getId())
-                .timelineUser(source.getTimelineUser())
                 .loggedInUser(source.getLoggedInUser())
                 .imageUrl(source.getImageUrl())
                 .time(source.getTime())
