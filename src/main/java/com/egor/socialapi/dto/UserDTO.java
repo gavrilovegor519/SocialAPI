@@ -7,14 +7,13 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
-import java.util.Objects;
-
 @Getter
 @Setter
 @ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @FieldMatch.List({
         @FieldMatch(first = "password", second = "passwordConfirmation", message = "Password fields must match")
 })
@@ -38,18 +37,5 @@ public class UserDTO {
     @NotNull
     @Size(min = 2, max = 100, message = "Min size is 2 and max size is 100")
     private String username;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserDTO user = (UserDTO) o;
-        return id.equals(user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 
 }

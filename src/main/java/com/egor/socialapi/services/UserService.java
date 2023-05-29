@@ -1,5 +1,6 @@
 package com.egor.socialapi.services;
 
+import com.egor.socialapi.dto.LoginDTO;
 import com.egor.socialapi.dto.PageDTO;
 import com.egor.socialapi.dto.UserDTO;
 import com.egor.socialapi.entities.User;
@@ -25,5 +26,5 @@ public interface UserService {
 
     void blockUser(Long userId);
 
-    String authenticate(UserDTO loginDto);
+    String authenticate(LoginDTO loginDto);
 }

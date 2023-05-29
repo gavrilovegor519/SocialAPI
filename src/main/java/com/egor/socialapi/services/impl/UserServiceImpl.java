@@ -3,6 +3,7 @@ package com.egor.socialapi.services.impl;
 import com.egor.socialapi.converters.PageToPageDTOUserConverter;
 import com.egor.socialapi.converters.UserDTOToUserConverter;
 import com.egor.socialapi.converters.UserToUserDTOConverter;
+import com.egor.socialapi.dto.LoginDTO;
 import com.egor.socialapi.dto.PageDTO;
 import com.egor.socialapi.dto.UserDTO;
 import com.egor.socialapi.entities.Role;
@@ -126,17 +127,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String authenticate(UserDTO loginDto) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginDto.getEmail(),
-                        loginDto.getPassword()
-                )
-        );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        User user = userRepository.findUserByEmail(authentication.getName());
+    public String authenticate(LoginDTO loginDto) {
+        User user = userRepository.findUserByEmail(loginDto.getEmail());
         List<String> rolesNames = new ArrayList<>();
-        user.getRoles().forEach(r-> rolesNames.add(r.getAuthority()));
+        user.getRoles().forEach(r -> rolesNames.add(r.getAuthority()));
         return jwtUtilities.generateToken(user.getUsername(), rolesNames);
     }
 }
