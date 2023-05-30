@@ -18,10 +18,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -94,7 +90,7 @@ public class UserServiceImpl implements UserService {
         assert user != null;
         user.setRoles(new ArrayList<>());
 
-        Role role = roleRepository.getRoleByName(ROLE_USER.toString());
+        Role role = roleRepository.getRoleByName(ROLE_USER);
         user.getRoles().add(role);
 
         userRepository.save(user);

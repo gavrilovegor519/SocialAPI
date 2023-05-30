@@ -13,6 +13,8 @@ public interface UserRepo extends PagingAndSortingRepository<User, Long>, CrudRe
 
     User findUserByEmail(String email);
 
+    User findUserByUsername(String username);
+
     Page<User> findAllByIdNot(Long Id, Pageable pageable);
 
     @Query(value = "SELECT u FROM User u WHERE u.id <> :id AND LOWER(u.username) LIKE :search")
