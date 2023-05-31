@@ -29,7 +29,7 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     private String username;
 
     @ManyToMany(fetch = FetchType.EAGER)

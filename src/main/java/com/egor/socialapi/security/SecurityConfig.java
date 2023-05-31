@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authHttp -> authHttp
-                        .requestMatchers("/reg", "/login").permitAll()
+                        .requestMatchers("/reg", "/login", "/error").permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/user/**")).hasRole("USER")
                         .requestMatchers(new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN"));
 
