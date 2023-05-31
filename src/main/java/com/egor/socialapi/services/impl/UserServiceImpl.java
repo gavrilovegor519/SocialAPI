@@ -70,16 +70,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public PageDTO<UserDTO> findAllPageable(Long id, Pageable pageable) {
-        Page<User> pagedUsers = userRepository.findAllByIdNot(id, pageable);
+    public PageDTO<UserDTO> findAllPageable(Pageable pageable) {
+        Page<User> pagedUsers = userRepository.findAll(pageable);
         return pageToPageDtoUserConverter.convert(pagedUsers);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public PageDTO<UserDTO> findAllWithSearch(Long id, String search, Pageable pageable) {
+    public PageDTO<UserDTO> findAllWithSearch(String search, Pageable pageable) {
         search = String.format("%%%s%%", search).toLowerCase();
-        Page<User> pagedUsers = userRepository.findAllWithSearch(id, search, pageable);
+        Page<User> pagedUsers = userRepository.findAllWithSearch(search, pageable);
         return pageToPageDtoUserConverter.convert(pagedUsers);
     }
 
@@ -108,7 +108,7 @@ public class UserServiceImpl implements UserService {
     public void makeUserAdmin(Long userId) {
         User user = getUser(userId);
         checkSuperAdmin(user);
-        Role role = roleRepository.getRoleByName(ROLE_ADMIN.toString());
+        Role role = roleRepository.getRoleByName(ROLE_ADMIN);
         user.getRoles().add(role);
         userRepository.save(user);
     }

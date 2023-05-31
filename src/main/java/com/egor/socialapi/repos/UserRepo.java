@@ -15,10 +15,8 @@ public interface UserRepo extends PagingAndSortingRepository<User, Long>, CrudRe
 
     User findUserByUsername(String username);
 
-    Page<User> findAllByIdNot(Long Id, Pageable pageable);
-
-    @Query(value = "SELECT u FROM User u WHERE u.id <> :id AND LOWER(u.username) LIKE :search")
-    Page<User> findAllWithSearch(@Param("id") Long id, @Param("search") String search, Pageable pageable);
+    @Query(value = "SELECT u FROM User u WHERE LOWER(u.username) LIKE :search")
+    Page<User> findAllWithSearch(@Param("search") String search, Pageable pageable);
 
     @Modifying(clearAutomatically = true)
     @Query("UPDATE User u SET u.password = :password WHERE u.id = :id")

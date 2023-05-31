@@ -14,9 +14,9 @@ public interface UserService {
 
     UserDTO getUserByEmail(String email);
 
-    PageDTO<UserDTO> findAllPageable(Long id, Pageable pageable);
+    PageDTO<UserDTO> findAllPageable(Pageable pageable);
 
-    PageDTO<UserDTO> findAllWithSearch(Long id, String search, Pageable pageable);
+    PageDTO<UserDTO> findAllWithSearch(String search, Pageable pageable);
 
     void createUser(UserDTO userDTO);
 

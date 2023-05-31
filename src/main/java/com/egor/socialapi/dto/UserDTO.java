@@ -3,6 +3,7 @@ package com.egor.socialapi.dto;
 import com.egor.socialapi.validation.FieldMatch;
 import com.egor.socialapi.validation.Password;
 import com.egor.socialapi.validation.ValidEmail;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -28,10 +29,12 @@ public class UserDTO {
     @NotNull
     @Size(min = 6, max = 100, message = "Min size is 6 and max size is 100")
     @Password
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @NotNull
     @Size(min = 6, max = 100, message = "Min size is 6 and max size is 100")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String passwordConfirmation;
 
     @NotNull

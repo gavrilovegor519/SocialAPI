@@ -4,7 +4,6 @@ import com.egor.socialapi.dto.PageDTO;
 import com.egor.socialapi.dto.UserDTO;
 import com.egor.socialapi.services.UserService;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,13 +19,13 @@ public class UserController {
     @GetMapping("/user/users/all")
     public PageDTO<UserDTO> all(@RequestParam(name = "first") int first,
                                 @RequestParam(name = "last") int last) {
-        return userService.findAllPageable(null, PageRequest.of(first, last - first, Sort.by("username")));
+        return userService.findAllPageable(PageRequest.of(first, last - first));
     }
 
     @GetMapping("/user/users/search")
     public PageDTO<UserDTO> search(@RequestParam(name = "name") String name,
                                    @RequestParam(name = "first") int first,
                                    @RequestParam(name = "last") int last) {
-        return userService.findAllWithSearch(null, name, PageRequest.of(first, last - first, Sort.by("username")));
+        return userService.findAllWithSearch(name, PageRequest.of(first, last - first));
     }
 }
