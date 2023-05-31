@@ -33,7 +33,7 @@ import static com.egor.socialapi.constants.Constants.ROLE_USER;
 public class UserServiceImpl implements UserService {
 
     private final AuthenticationManager authenticationManager;
-    private final JwtUtilities jwtUtilities ;
+    private final JwtUtilities jwtUtilities;
     private final UserRepo userRepository;
     private final RoleRepo roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;

@@ -3,7 +3,10 @@ package com.egor.socialapi.dto;
 import com.egor.socialapi.validation.Password;
 import com.egor.socialapi.validation.ValidEmail;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
