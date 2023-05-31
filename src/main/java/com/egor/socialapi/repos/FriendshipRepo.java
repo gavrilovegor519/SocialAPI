@@ -13,6 +13,8 @@ public interface FriendshipRepo extends CrudRepository<Friendship, Long> {
 
     List<Friendship> findAllByUserSenderIdOrUserReceiverId(Long userSenderId, Long userReceiverId);
 
+    List<Friendship> findAllByUserSenderId(Long userSenderId);
+
     @Query("SELECT f from Friendship f WHERE (f.userSender.id = :userId OR f.userReceiver.id = :userId) " +
             "AND f.accepted = true")
     List<Friendship> findAcceptedFriendshipUsers(@Param("userId") Long userId);
