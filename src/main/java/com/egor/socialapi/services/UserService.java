@@ -14,6 +14,8 @@ public interface UserService {
 
     UserDTO getUserByEmail(String email);
 
+    UserDTO getUserByUsername(String username);
+
     PageDTO<UserDTO> findAllPageable(Pageable pageable);
 
     PageDTO<UserDTO> findAllWithSearch(String search, Pageable pageable);

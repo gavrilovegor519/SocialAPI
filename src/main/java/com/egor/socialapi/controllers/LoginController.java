@@ -5,7 +5,6 @@ import com.egor.socialapi.dto.LoginDTO;
 import com.egor.socialapi.dto.UserDTO;
 import com.egor.socialapi.repos.UserRepo;
 import com.egor.socialapi.services.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +22,7 @@ public class LoginController {
         userService.createUser(userDTO);
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public String login(@RequestBody LoginDTO loginDTO) {
         return userService.authenticate(loginDTO);
     }

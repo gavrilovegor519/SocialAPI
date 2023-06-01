@@ -69,6 +69,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDTO getUserByUsername(String username) {
+        User user = userRepository.findUserByUsername(username);
+        return userToUserDtoConverter.convert(user);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public PageDTO<UserDTO> findAllPageable(Pageable pageable) {
         Page<User> pagedUsers = userRepository.findAll(pageable);
