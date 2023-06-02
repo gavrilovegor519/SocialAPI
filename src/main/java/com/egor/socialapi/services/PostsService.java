@@ -10,4 +10,6 @@ public interface PostsService {
     PageDTO<PostsDTO> getAllPosts(Long userId, Pageable pageable);
 
     void deletePost(Long postToRemoveId) throws Exception;
+
+    PostsDTO getPostById(Long postId) throws Exception;
 }

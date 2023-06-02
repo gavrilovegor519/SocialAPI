@@ -2,6 +2,7 @@ package com.egor.socialapi.services.impl;
 
 import com.egor.socialapi.converters.PostPageToPostPageDTOConverter;
 import com.egor.socialapi.converters.PostsDTOToPostsConverter;
+import com.egor.socialapi.converters.PostsToPostsDTOConverter;
 import com.egor.socialapi.dto.PageDTO;
 import com.egor.socialapi.dto.PostsDTO;
 import com.egor.socialapi.entities.Friendship;
@@ -20,12 +21,14 @@ public class PostsServiceImpl implements PostsService {
     private final FriendshipRepo friendshipRepo;
     private final PostsDTOToPostsConverter postsDTOToPostsConverter;
     private final PostPageToPostPageDTOConverter postPageToPostPageDTOConverter;
+    private final PostsToPostsDTOConverter postsToPostsDTOConverter;
 
-    public PostsServiceImpl(PostsRepo postsRepo, FriendshipRepo friendshipRepo, PostsDTOToPostsConverter postsDTOToPostsConverter, PostPageToPostPageDTOConverter postPageToPostPageDTOConverter) {
+    public PostsServiceImpl(PostsRepo postsRepo, FriendshipRepo friendshipRepo, PostsDTOToPostsConverter postsDTOToPostsConverter, PostPageToPostPageDTOConverter postPageToPostPageDTOConverter, PostsToPostsDTOConverter postsToPostsDTOConverter) {
         this.postsRepo = postsRepo;
         this.friendshipRepo = friendshipRepo;
         this.postsDTOToPostsConverter = postsDTOToPostsConverter;
         this.postPageToPostPageDTOConverter = postPageToPostPageDTOConverter;
+        this.postsToPostsDTOConverter = postsToPostsDTOConverter;
     }
 
     @Override
@@ -46,5 +49,10 @@ public class PostsServiceImpl implements PostsService {
     @Override
     public void deletePost(Long postToRemoveId) throws Exception {
         postsRepo.deleteById(postToRemoveId);
+    }
+
+    @Override
+    public PostsDTO getPostById(Long postId) throws Exception {
+        return postsToPostsDTOConverter.convert(postsRepo.findById(postId).get());
     }
 }
