@@ -17,7 +17,6 @@ import com.egor.socialapi.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +31,6 @@ import static com.egor.socialapi.constants.Constants.ROLE_USER;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-    private final AuthenticationManager authenticationManager;
     private final JwtUtilities jwtUtilities;
     private final UserRepo userRepository;
     private final RoleRepo roleRepository;
