@@ -3,7 +3,9 @@ package com.egor.socialapi.converters;
 import com.egor.socialapi.dto.PostsDTO;
 import com.egor.socialapi.entities.Posts;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PostsDTOToPostsConverter implements Converter<PostsDTO, Posts> {
     @Override
     public Posts convert(PostsDTO source) {

@@ -11,25 +11,23 @@ import com.egor.socialapi.entities.User;
 import com.egor.socialapi.repos.FriendshipRepo;
 import com.egor.socialapi.repos.PostsRepo;
 import com.egor.socialapi.services.PostsService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class PostsServiceImpl implements PostsService {
     private final PostsRepo postsRepo;
     private final FriendshipRepo friendshipRepo;
     private final PostsDTOToPostsConverter postsDTOToPostsConverter;
     private final PostPageToPostPageDTOConverter postPageToPostPageDTOConverter;
     private final PostsToPostsDTOConverter postsToPostsDTOConverter;
-
-    public PostsServiceImpl(PostsRepo postsRepo, FriendshipRepo friendshipRepo, PostsDTOToPostsConverter postsDTOToPostsConverter, PostPageToPostPageDTOConverter postPageToPostPageDTOConverter, PostsToPostsDTOConverter postsToPostsDTOConverter) {
-        this.postsRepo = postsRepo;
-        this.friendshipRepo = friendshipRepo;
-        this.postsDTOToPostsConverter = postsDTOToPostsConverter;
-        this.postPageToPostPageDTOConverter = postPageToPostPageDTOConverter;
-        this.postsToPostsDTOConverter = postsToPostsDTOConverter;
-    }
 
     @Override
     public void createPost(PostsDTO postCreateBindingModel) throws Exception {
