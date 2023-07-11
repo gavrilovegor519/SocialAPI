@@ -22,9 +22,7 @@ import java.util.function.Function;
 @Component
 public class JwtUtilities {
 
-
-    @Value("${jwt.secret}")
-    private String secret;
+    private String secret = "a3JuZ2puam5oamZuZGp0eW5qbmpuamJnbmJqZG5yam5qbmRqZG5iZGpkZmpkbmpuZ2ZuamJuZ2pqbmJnbmdqZ24=";
 
     @Value("${jwt.expiration}")
     private Long jwtExpiration;
