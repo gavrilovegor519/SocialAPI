@@ -36,7 +36,7 @@ public class FriendsServiceImpl implements FriendsService {
         Map<Boolean, List<Friendship>> requestMap = requests.stream()
                 .collect(Collectors.partitioningBy(Friendship::getAccepted));
 
-        Predicate<User> userPredicate = u -> StringUtils.isEmpty(search) ||
+        Predicate<User> userPredicate = u -> StringUtils.hasLength(search) ||
                 (u.getUsername()).toLowerCase().contains(search.toLowerCase());
         Set<UserDTO> usersNotAcceptedRequests = requestMap.get(false).stream()
                 .filter(r -> r.getUserSender().getId().equals(userId))
